@@ -8,6 +8,7 @@ module "ec2" {
   environment = "dev"
   name = "myapp"
   ssh_key_pair = "Lewis"
+  security_groups = [module.sg.security_group_id]
 }
 
 module "sg" {
