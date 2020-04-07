@@ -12,7 +12,6 @@ Terraform (>= 0.12.0) module to create an EC2
 - [Support](#Support)
 - [License](#License)
 
-
 ----
 
 ## Example
