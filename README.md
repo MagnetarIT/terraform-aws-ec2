@@ -3,7 +3,8 @@
 # terraform-aws-ec2
 Terraform (>= 0.12.0) module to create an EC2
 
-[![Build Status](https://dev.azure.com/MagnetarIT/terraform-aws-ec2/_apis/build/status/MagnetarIT.terraform-aws-ec2?branchName=master)](https://dev.azure.com/MagnetarIT/terraform-aws-ec2/_build/latest?definitionId=14&branchName=master)
+[![Build Status](https://dev.azure.com/MagnetarIT/terraform-aws-ec2/_apis/build/status/MagnetarIT.terraform-aws-ec2?branchName=master)](https://dev.azure.com/MagnetarIT/terraform-aws-ec2/_build/latest?definitionId=14&branchName=master) ![Latest Release](https://img.shields.io/github/release/MagnetarIT/terraform-aws-ec2.svg)
+
 
 - [Intro](#Intro)
 - [Example](#Example)
