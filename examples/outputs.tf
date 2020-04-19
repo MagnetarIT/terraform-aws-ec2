@@ -57,3 +57,8 @@ output "primary_network_interface_id" {
   description = "ID of the instance's primary network interface"
   value       = module.ec2.primary_network_interface_id
 }
+
+output "kms_key_id" {
+  description = "Amazon Resource Name (ARN) of the KMS Key to use when encrypting the volume. Default to (aws_ebs_default_kms_key)"
+  value       = module.ec2.kms_key_id
+}

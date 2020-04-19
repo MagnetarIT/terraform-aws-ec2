@@ -251,3 +251,9 @@ variable "kms_key_id" {
   default     = ""
   description = "Amazon Resource Name (ARN) of the KMS Key to use when encrypting the volume. Default to (aws_ebs_default_kms_key)"
 }
+
+variable "additional_cloudwatch_alarm_action" {
+  type        = string
+  default     = ""
+  description = "Additional cloudwatch alarm action arn to trigger if instance fails status checks."
+}

@@ -9,6 +9,8 @@ module "ec2" {
   name = "myapp"
   ssh_key_pair = "Lewis"
   security_groups = [module.sg.security_group_id]
+  aws_cloudwatch_auto_reboot = true
+  additional_cloudwatch_alarm_action = ""
 }
 
 module "sg" {

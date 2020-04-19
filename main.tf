@@ -16,10 +16,16 @@ locals {
   root_volume_type   = var.root_volume_type != "" ? var.root_volume_type : data.aws_ami.info.root_device_type
   public_dns         = var.associate_public_ip_address ? join("", aws_instance.default.*.public_dns) : ""
   is_t_instance_type = replace(var.instance_type, "/^t(2|3|3a){1}\\..*$/", "1") == "1" ? true : false
-  kms_key_id         = var.kms_key_id == "" ? data.aws_ebs_default_kms_key.current.key_arn : var.kms_key_id
+  kms_key_id         = var.kms_key_id == "" ? data.aws_kms_key.default.arn : var.kms_key_id
 }
 
 data "aws_caller_identity" "default" {
+}
+
+data "aws_ebs_default_kms_key" "default" {}
+
+data "aws_kms_key" "default" {
+  key_id = data.aws_ebs_default_kms_key.default.key_arn
 }
 
 data "aws_region" "default" {
@@ -76,8 +82,6 @@ data "aws_iam_policy_document" "default" {
     effect = "Allow"
   }
 }
-
-data "aws_ebs_default_kms_key" "current" {}
 
 resource "aws_iam_instance_profile" "default" {
   name = module.naming.id
@@ -173,7 +177,8 @@ resource "aws_cloudwatch_metric_alarm" "default" {
     InstanceId = join("", aws_instance.default.*.id)
   }
 
-  alarm_actions = [
-    null_resource.check_alarm_action[count.index].triggers.action
-  ]
+  alarm_actions = compact([
+    null_resource.check_alarm_action[count.index].triggers.action,
+    var.additional_cloudwatch_alarm_action
+  ])
 }

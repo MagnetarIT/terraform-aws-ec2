@@ -54,6 +54,7 @@ This module will create the following resources
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| additional\_cloudwatch\_alarm\_action | Additional cloudwatch alarm action arn to trigger if instance fails status checks. | `string` | `""` | no |
 | ami | The AMI to use for the instance. By default it is the AMI provided by Amazon with Ubuntu 16.04 | `string` | `""` | no |
 | ami\_owner | Owner of the given AMI (ignored if `ami` unset) | `string` | `""` | no |
 | applying\_period | The period in seconds over which the specified statistic is applied | `number` | `60` | no |
