@@ -16,6 +16,7 @@ locals {
   root_volume_type   = var.root_volume_type != "" ? var.root_volume_type : data.aws_ami.info.root_device_type
   public_dns         = var.associate_public_ip_address ? join("", aws_instance.default.*.public_dns) : ""
   is_t_instance_type = replace(var.instance_type, "/^t(2|3|3a){1}\\..*$/", "1") == "1" ? true : false
+  kms_key_id         = var.kms_key_id == "" ? data.aws_ebs_default_kms_key.current.key_arn : var.kms_key_id
 }
 
 data "aws_caller_identity" "default" {
@@ -30,6 +31,7 @@ data "aws_partition" "default" {
 data "aws_subnet" "default" {
   id                = var.subnet
   availability_zone = var.subnet == "" ? var.default_availability_zone : ""
+  default_for_az    = var.subnet == "" ? true : false
 }
 
 data "aws_ami" "default" {
@@ -75,6 +77,8 @@ data "aws_iam_policy_document" "default" {
   }
 }
 
+data "aws_ebs_default_kms_key" "current" {}
+
 resource "aws_iam_instance_profile" "default" {
   name = module.naming.id
   role = join("", aws_iam_role.default.*.name)
@@ -110,12 +114,15 @@ resource "aws_instance" "default" {
   ipv6_address_count          = var.ipv6_address_count < 0 ? null : var.ipv6_address_count
   ipv6_addresses              = length(var.ipv6_addresses) == 0 ? null : var.ipv6_addresses
   vpc_security_group_ids      = var.security_groups
+  
 
   root_block_device {
     volume_type           = local.root_volume_type
     volume_size           = var.root_volume_size
     iops                  = local.root_iops
     delete_on_termination = var.delete_on_termination
+    kms_key_id            = local.kms_key_id
+    encrypted             = true
   }
 
   credit_specification {

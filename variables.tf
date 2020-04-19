@@ -246,4 +246,8 @@ variable "aws_cloudwatch_auto_reboot" {
   description = "Enable the cloudwatch auto reboot alarm"
 }
 
-
+variable "kms_key_id" {
+  type        = string
+  default     = ""
+  description = "Amazon Resource Name (ARN) of the KMS Key to use when encrypting the volume. Default to (aws_ebs_default_kms_key)"
+}

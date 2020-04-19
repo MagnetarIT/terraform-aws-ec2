@@ -78,6 +78,7 @@ This module will create the following resources
 | instance\_type | The type of the instance | `string` | `"t2.micro"` | no |
 | ipv6\_address\_count | Number of IPv6 addresses to associate with the primary network interface. Amazon EC2 chooses the IPv6 addresses from the range of your subnet (-1 to use subnet default) | `number` | `0` | no |
 | ipv6\_addresses | List of IPv6 addresses from the range of the subnet to associate with the primary network interface | `list(string)` | `[]` | no |
+| kms\_key\_id | Amazon Resource Name (ARN) of the KMS Key to use when encrypting the volume. Default to (aws\_ebs\_default\_kms\_key) | `string` | `""` | no |
 | metric\_name | The name for the alarm's associated metric. Allowed values can be found in https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/ec2-metricscollected.html | `string` | `"StatusCheckFailed_Instance"` | no |
 | metric\_namespace | The namespace for the alarm's associated metric. Allowed values can be found in https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/aws-namespaces.html | `string` | `"AWS/EC2"` | no |
 | metric\_threshold | The value against which the specified statistic is compared | `number` | `1` | no |
@@ -106,6 +107,7 @@ This module will create the following resources
 | alarm | CloudWatch Alarm ID |
 | ebs\_ids | IDs of EBSs |
 | id | Disambiguated ID of the instance |
+| kms\_key\_id | Amazon Resource Name (ARN) of the KMS Key to use when encrypting the volume. Default to (aws\_ebs\_default\_kms\_key) |
 | name | Instance name |
 | primary\_network\_interface\_id | ID of the instance's primary network interface |
 | private\_dns | Private DNS of instance |
