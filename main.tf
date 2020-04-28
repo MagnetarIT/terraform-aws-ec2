@@ -133,8 +133,8 @@ resource "aws_instance" "default" {
     cpu_credits = local.is_t_instance_type ? var.cpu_credits : null
   }
 
-  tags = module.naming.tags
-
+  tags        = module.naming.tags
+  volume_tags = module.naming.tags
 }
 
 resource "aws_ebs_volume" "default" {
