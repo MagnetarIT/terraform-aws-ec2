@@ -108,6 +108,8 @@ This module will create the following resources
 |------|-------------|
 | alarm | CloudWatch Alarm ID |
 | ebs\_ids | IDs of EBSs |
+| elastic\_ip\_id | Contains the EIP allocation ID. |
+| elastic\_ip\_public\_ip | Contains the public IP address for the Elastic IP. |
 | id | Disambiguated ID of the instance |
 | kms\_key\_id | Amazon Resource Name (ARN) of the KMS Key to use when encrypting the volume. Default to (aws\_ebs\_default\_kms\_key) |
 | name | Instance name |

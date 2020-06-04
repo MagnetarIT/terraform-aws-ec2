@@ -62,3 +62,13 @@ output "kms_key_id" {
   description = "Amazon Resource Name (ARN) of the KMS Key to use when encrypting the volume. Default to (aws_ebs_default_kms_key)"
   value       = local.kms_key_id
 }
+
+output "elastic_ip_public_ip" {
+  description = "Contains the public IP address for the Elastic IP."
+  value       = join("",aws_eip.default.*.public_ip)
+}
+
+output "elastic_ip_id" {
+  description = "Contains the EIP allocation ID."
+  value       = join("", aws_eip.default.*.id)
+}
