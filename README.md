@@ -58,6 +58,7 @@ This module will create the following resources
 | ami | The AMI to use for the instance. By default it is the AMI provided by Amazon with Ubuntu 16.04 | `string` | `""` | no |
 | ami\_owner | Owner of the given AMI (ignored if `ami` unset) | `string` | `""` | no |
 | applying\_period | The period in seconds over which the specified statistic is applied | `number` | `60` | no |
+| assign\_elastic\_ip | Determine whether or not to assign an Elastic IP to the instance | `bool` | `false` | no |
 | associate\_public\_ip\_address | Associate a public IP address with the instance | `bool` | `true` | no |
 | attributes | Additional attributes (e.g. `1`) | `list(string)` | `[]` | no |
 | aws\_cloudwatch\_auto\_reboot | Enable the cloudwatch auto reboot alarm | `bool` | `false` | no |

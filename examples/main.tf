@@ -11,6 +11,7 @@ module "ec2" {
   security_groups = [module.sg.security_group_id]
   aws_cloudwatch_auto_reboot = true
   additional_cloudwatch_alarm_action = ""
+  assign_elastic_ip = true
 }
 
 module "sg" {

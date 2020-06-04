@@ -182,3 +182,10 @@ resource "aws_cloudwatch_metric_alarm" "default" {
     var.additional_cloudwatch_alarm_action
   ])
 }
+
+resource "aws_eip" "default" {
+  count    = var.assign_elastic_ip ? 1 : 0
+  instance = aws_instance.default.id
+  vpc      = true
+  tags     = module.naming.tags
+}

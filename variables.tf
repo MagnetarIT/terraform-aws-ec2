@@ -257,3 +257,9 @@ variable "additional_cloudwatch_alarm_action" {
   default     = ""
   description = "Additional cloudwatch alarm action arn to trigger if instance fails status checks."
 }
+
+variable "assign_elastic_ip" {
+  type        = bool
+  default     = false
+  description = "Determine whether or not to assign an Elastic IP to the instance"
+}
