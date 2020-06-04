@@ -23,7 +23,7 @@ provider "aws" {
 }
 
 module "ec2" {
-  source       = "git::https://github.com/MagnetarIT/terraform-aws-ec2.git?ref=tags/0.1.0"
+  source       = "git::https://github.com/MagnetarIT/terraform-aws-ec2.git?ref=tags/0.3.0"
   namespace    = "mag"
   environment  = "dev"
   name         = "myapp"
