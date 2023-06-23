@@ -1,5 +1,5 @@
 module "naming" {
-  source      = "git::https://github.com/MagnetarIT/terraform-naming-standard.git?ref=tags/0.1.0"
+  source      = "git::https://github.com/MagnetarIT/terraform-naming-standard.git?ref=tags/0.2.0"
   namespace   = var.namespace
   environment = var.environment
   name        = var.name
